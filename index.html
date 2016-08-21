@@ -1,0 +1,84 @@
+<html>
+
+<!-- Styling -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="./style.css" media="screen" />
+<!-- Scripts -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="./script.js"></script>
+
+<head>
+  <title>JS Calculator by Shawn Stern</title>
+</head>
+
+<body>
+  <section class="calculator container text-center">
+    <div class="calcInner">
+      <div class="calcScreen">
+        <!-- Use readonly attribute to make field selectable, but not manaully editable -->
+        <input type="text" id="result" readonly>
+      </div>
+      <div class="calcButtons text-center">
+        <button class="button" value="AC">AC</button>
+        <button class="button" value="CE">CE</button>
+        <button class="button" value="%">%</button>
+        <button class="button" value="/">/</button>
+
+        <button class="button" value="7">7</button>
+        <button class="button" value="8">8</button>
+        <button class="button" value="9">9</button>
+        <button class="button" value="*">*</button>
+
+        <button class="button" value="4">4</button>
+        <button class="button" value="5">5</button>
+        <button class="button" value="6">6</button>
+        <button class="button" value="-">-</button>
+
+        <button class="button" value="1">1</button>
+        <button class="button" value="2">2</button>
+        <button class="button" value="3">3</button>
+        <button class="button" value="+">+</button>
+
+        <button class="button" value=".">.</button>
+        <button class="button" value="0">0</button>
+        <button class="button" value="Ans">Ans</button>
+        <button class="button" value="=">=</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-info" id="helper">Toggle Help!</button>
+      </div>
+      <div class="hidden hints">
+          <ul>
+            <li>'Ans' recalls the last result</li>
+            <li>'AC' clears the screen</li>
+            <li>'CE' deletes the latest input</li>
+          </ul>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT INFO SECTION -->
+  <section id="contact" class="container text-center" style="margin: 50px auto auto auto;">
+    <a name="contact" class="anchor "></a>
+    <div>
+      <h3>Contact Me</h3>
+      <ul class="contactList ">
+        <li><a href="https://www.linkedin.com/in/shawn-stern-48496747 " target='_blank'><i class="fa fa-2x fa-linkedin " aria-hidden="true "></i></a></li>
+        <li><a href="https://github.com/stern-shawn" target='_blank'><i class="fa fa-2x fa-github " aria-hidden="true "></i></a></li>
+        <li><a href="https://www.freecodecamp.com/stern-shawn" target='_blank'><i class="fa fa-2x fa-fire " aria-hidden="true "></i></a></li>
+      </ul>
+      <div>
+  </section>
+
+  <!-- FOOTER/COPYRIGHT SECTION -->
+  <footer id="copyright" class="container ">
+    <div class="row text-center ">
+      <p>© Copyright Shawn Stern 2016</p>
+    </div>
+  </footer>
+</body>
+
+</html>
