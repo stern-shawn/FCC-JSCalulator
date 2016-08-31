@@ -1,7 +1,7 @@
-// Vars. Use result to store results of caluclations, display to hold the value of inputs as they're being formed, and
-// ans if the user is using the temporary store functionality of the Ans button. isClear tells us whether to append values
-// to a growing input, or to start from scratch...
-// var result = "";
+// Vars. Use result to store results of caluclations, display to hold the value
+// of inputs as they're being formed, and ans if the user is using the
+// temporary store functionality of the Ans button. isClear tells us whether to
+// append values to a growing input, or to start from scratch...
 var ans = "";
 var display = "";
 var isClear = false;
@@ -12,8 +12,11 @@ $(document).ready(function() {
     var input = $(this).attr('value');
     console.log("Input is: " + input);
 
-    // Parse to see if it is a value or operator to be added to the string, or if we need to perform a function. We can use the inverse of isNaN to check for numeric inputs
+    // Parse to see if it is a value or operator to be added to the string,
+    // or if we need to perform a function.
+    // We can use the inverse of isNaN to check for numeric inputs
     if(!isNaN(input) || input === "+" || input === "-" || input === "*" || input === "/" || input === "%" || input === ".") {
+      // TODO: Prevent redundant insertions of multiple decimals...
       if (isClear === true) {
         // Reset the screen value
         isClear = false;
@@ -57,12 +60,8 @@ $(document).ready(function() {
     }
   });
 
-  // Toggle visibility of help text
+  // Toggle telp text using .toggle instead of .hasClass/.addClass/.removeClass
   $('#helper').click(function() {
-    if ($('.hints').hasClass('hidden')) {
-      $('.hints').removeClass('hidden');
-    } else {
-      $('.hints').addClass('hidden');
-    }
+    $('.hints').toggle(350);
   });
 });

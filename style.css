@@ -41,12 +41,14 @@ body, html {
   border-radius: 2px;
 }
 
+/* Initially hidden */
 .hints {
   margin-top: 2px;
   background-color: #51829D;
   color: #E4F6F3;
   border-radius: 5px;
   padding: 1px;
+  display: none;
 }
 
 .hints h2, li{
