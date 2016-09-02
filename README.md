@@ -48,6 +48,7 @@ TODO:
 * ~~Implement behavior of equals button~~
 * ~~Implement behavior of AC, CE~~
 * ~~Implement behavior of Ans and revisit interaction with equals button~~
-* Implement better logic for calculator operation to match windows calculator
+* ~~Implement better logic for calculator operation to match windows calculator~~
+* ~~Fix CE not working after hitting "=" (turns out eval was reducing the expression to a number, and .slice() only works on strings! .toString() to the rescue)~~
 * Restyle app
 * Add animations?

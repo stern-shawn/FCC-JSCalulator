@@ -1,67 +1,54 @@
-// Vars. Use result to store results of caluclations, display to hold the value
-// of inputs as they're being formed, and ans if the user is using the
-// temporary store functionality of the Ans button. isClear tells us whether to
-// append values to a growing input, or to start from scratch...
-var ans = "";
-var display = "";
-var isClear = false;
+// Value currently being input/result of hitting "="
+var display = ""
+// Short term storage tied to the "Ans" button for recalls
+var ans = ""
+// Store previous input to prevent inserting duplicate decimals and operators
+var prevInput = ""
 
 $(document).ready(function() {
   $('.button').click(function() {
     // Get the button being clicked and store its value
-    var input = $(this).attr('value');
-    console.log("Input is: " + input);
+    var input = $(this).attr('value')
+    // console.log("Input is: " + input)
 
     // Parse to see if it is a value or operator to be added to the string,
     // or if we need to perform a function.
-    // We can use the inverse of isNaN to check for numeric inputs
-    if(!isNaN(input) || input === "+" || input === "-" || input === "*" || input === "/" || input === "%" || input === ".") {
-      // TODO: Prevent redundant insertions of multiple decimals...
-      if (isClear === true) {
-        // Reset the screen value
-        isClear = false;
-        display = input;
-        $('#result').val(display);
-      } else {
-        // Append to the screen instead
-        display += input;
-        $('#result').val(display);
-      }
+    // We can use the inverse of isNaN to check for numeric inputs.
+    // If input isn't numeric, prevent duplicates by checking previous input
+    if(!isNaN(input) || ((input === "+" || input === "-" || input === "*" || input === "/" || input === "%" || input === ".") && (input !== prevInput))) {
+      display += input
+      $('#result').val(display)
+      prevInput = input
     } else if (input === "AC") {
       // Clear everything
-      isClear = true;
-      display = "";
-      result = "";
-      $('#result').val(display);
+      display = ""
+      $('#result').val(display)
+      prevInput = "AC"
     } else if (input === "CE") {
-      // For some reason these jokers treat CE as a delete key...
-      // If isClear is true, we don't really need to do anything, let's just have a check here to save time
-      if (!isClear) {
-        // Remove latest entry...
-        display = display.slice(0, -1);
-        $('#result').val(display);
-      }
+      // Remove latest entry...
+      display = display.slice(0, -1)
+      $('#result').val(display)
+      prevInput = "CE"
     } else if (input === "Ans") {
       // Use the 'Ans' key to recall the last calculated value and tack onto the current input
-      display += ans.toString();
-      $('#result').val(display);
-      isClear = false;
+      display += ans.toString()
+      $('#result').val(display)
+      prevInput = "Ans"
     } else if (input === "=") {
       // Leverage the eval() function to do the math for us
-      display = eval(display);
-      console.log(display);
-      // Keep decimal values relatively short
-      // if (display.indexOf('.') > 0) {
-      //   console.log("Decimal point at... " + display.indexOf('.'));
-      // }
-      $('#result').val(display);
-      isClear = true;
-      ans = display;
+      // Slice can only be done on arrays or strings. Convert to string, too.
+      // This was causing a problem where CE didn't work after "=" because
+      // at that point display was a number, not a string because of eval()...
+      display = eval(display).toString()
+      $('#result').val(display)
+      ans = display
+      prevInput = "="
     }
-  });
+  })
 
-  // Toggle telp text using .toggle instead of .hasClass/.addClass/.removeClass
+  // Toggle telp text using .toggle instead of the old
+  // .hasClass/.addClass/.removeClass combo when I was just starting out
   $('#helper').click(function() {
-    $('.hints').toggle(350);
-  });
-});
+    $('.hints').toggle(350)
+  })
+})
