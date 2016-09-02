@@ -17,22 +17,18 @@ $(document).ready(function() {
     // If input isn't numeric, prevent duplicates by checking previous input
     if(!isNaN(input) || ((input === "+" || input === "-" || input === "*" || input === "/" || input === "%" || input === ".") && (input !== prevInput))) {
       display += input
-      $('#result').val(display)
       prevInput = input
     } else if (input === "AC") {
       // Clear everything
       display = ""
-      $('#result').val(display)
       prevInput = "AC"
     } else if (input === "CE") {
       // Remove latest entry...
       display = display.slice(0, -1)
-      $('#result').val(display)
       prevInput = "CE"
     } else if (input === "Ans") {
       // Use the 'Ans' key to recall the last calculated value and tack onto the current input
       display += ans.toString()
-      $('#result').val(display)
       prevInput = "Ans"
     } else if (input === "=") {
       // Leverage the eval() function to do the math for us
@@ -40,10 +36,11 @@ $(document).ready(function() {
       // This was causing a problem where CE didn't work after "=" because
       // at that point display was a number, not a string because of eval()...
       display = eval(display).toString()
-      $('#result').val(display)
       ans = display
       prevInput = "="
     }
+    
+    $('#result').val(display)
   })
 
   // Toggle telp text using .toggle instead of the old
